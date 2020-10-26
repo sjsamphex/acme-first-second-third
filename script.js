@@ -5,6 +5,13 @@ const users = [
   { id: 4, name: 'lucy', slot: 'third', selected: true },
 ];
 
+const slotTable = {
+  first: 1,
+  second: 2,
+  third: 3,
+};
+const arraySlots = ['zero', 'first', 'second', 'third'];
+
 //console.log(users);
 draw(users);
 
@@ -24,8 +31,8 @@ function draw(users) {
 }
 
 function clearDiv() {
-  for (let user of users) {
-    let divNode = document.getElementById(`${user.slot}-users`);
+  for (let i = 1; i < arraySlots.length; i++) {
+    let divNode = document.getElementById(`${arraySlots[i]}-users`);
     while (divNode.firstChild) {
       divNode.removeChild(divNode.firstChild);
     }
@@ -35,7 +42,7 @@ function clearDiv() {
 const buttonpress = document.addEventListener('click', move);
 
 function move(ev) {
-  if (ev.target.tagName === 'BUTTON') {
+  if (ev.target.tagName === 'BUTTON' && ev.target.className === 'selected') {
     // console.log(
     //   `Target Text:${ev.target.innerText}; Parent ID:${ev.target.parentNode.parentNode.id}`
     // );
@@ -46,7 +53,13 @@ function move(ev) {
         return user.name === p.innerText;
       });
       if (userInfo.selected) {
-        console.log(`will ${ev.target.innerText} the slot of ${p.innerText}`);
+        // console.log(`will ${ev.target.innerText} the slot of ${p.innerText}`);
+
+        if (ev.target.innerText === '>') {
+          userInfo.slot = arraySlots[slotTable[userInfo.slot] + 1];
+        } else {
+          userInfo.slot = arraySlots[slotTable[userInfo.slot] - 1];
+        }
       }
     });
 
