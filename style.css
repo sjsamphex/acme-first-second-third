@@ -32,7 +32,16 @@ p {
   height: 50px;
   text-align: center;
   padding: 1rem;
+  cursor: pointer;
 }
+
+button:hover,
+p:hover,
+button:focus,
+p:focus {
+  border: 2px solid blue;
+}
+
 .selected {
   background-color: red;
 }
