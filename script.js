@@ -42,7 +42,12 @@ function move(ev) {
 
     const divUsers = [...ev.target.parentNode.parentNode.querySelectorAll('p')];
     divUsers.forEach((p) => {
-      console.log(p.innerText);
+      let userInfo = users.find((user) => {
+        return user.name === p.innerText;
+      });
+      if (userInfo.selected) {
+        console.log(`will ${ev.target.innerText} the slot of ${p.innerText}`);
+      }
     });
 
     draw(users);
@@ -54,6 +59,5 @@ function move(ev) {
       }
     });
     draw(users);
-    //let selection = [...document.querySelectorAll('p')];
   }
 }
