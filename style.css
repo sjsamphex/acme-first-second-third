@@ -36,3 +36,18 @@ p {
 .selected {
   background-color: red;
 }
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 0.5em;
+  }
+  button,
+  p {
+    border: 1px solid white;
+    width: 20px;
+    height: 5px;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.5em;
+  }
+}
